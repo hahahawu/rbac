@@ -1,18 +1,26 @@
 package com.rbac.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by hahah on 2017/5/5.
  */
 @Entity
-@Table(name = "operation", schema = "rbac", catalog = "")
+@Table(name = "operation", schema = "rbac")
 public class OperationEntity {
-    private int operationid;
-    private String operationname;
-
     @Id
     @Column(name = "operationid")
+    private int operationid;
+
+    @Basic
+    @Column(name = "operationname",nullable = false)
+    private String operationname;
+
+    @OneToMany(mappedBy = "pooperationEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Privilege2OpEntity> privilege2OpEntitySet;
+
+
     public int getOperationid() {
         return operationid;
     }
@@ -21,8 +29,6 @@ public class OperationEntity {
         this.operationid = operationid;
     }
 
-    @Basic
-    @Column(name = "operationname")
     public String getOperationname() {
         return operationname;
     }

@@ -1,18 +1,30 @@
 package com.rbac.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by hahah on 2017/5/5.
  */
 @Entity
-@Table(name = "privilege", schema = "rbac", catalog = "")
+@Table(name = "privilege", schema = "rbac")
 public class PrivilegeEntity {
-    private int privilegeid;
-    private String privilegename;
-
     @Id
     @Column(name = "privilegeid")
+    private int privilegeid;
+    @Basic
+    @Column(name = "privilegename",nullable = false)
+    private String privilegename;
+
+    @OneToMany(mappedBy = "rpprivilegeEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Role2PrivilegeEntity> role2PrivilegeEntitySet;
+
+    @OneToMany(mappedBy = "poprivilegeEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Privilege2OpEntity> privilege2OpEntitySet;
+
+    @OneToMany(mappedBy = "peprivilegeEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Privilege2ElementEntity> privilege2ElementEntitySet;
+
     public int getPrivilegeid() {
         return privilegeid;
     }
@@ -21,8 +33,6 @@ public class PrivilegeEntity {
         this.privilegeid = privilegeid;
     }
 
-    @Basic
-    @Column(name = "privilegename")
     public String getPrivilegename() {
         return privilegename;
     }

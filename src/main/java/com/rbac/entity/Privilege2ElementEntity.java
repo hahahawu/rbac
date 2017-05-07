@@ -1,9 +1,6 @@
 package com.rbac.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by hahah on 2017/5/5.
@@ -11,10 +8,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "privilege2element", schema = "rbac", catalog = "")
 public class Privilege2ElementEntity {
-    private int p2Eid;
-
     @Id
     @Column(name = "p2eid")
+    private int p2Eid;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "pid",referencedColumnName = "privilegeid")
+    private PrivilegeEntity peprivilegeEntity;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "eid",referencedColumnName = "elementid")
+    private ElementsinpageEntity peelementsinpageEntity;
+
     public int getP2Eid() {
         return p2Eid;
     }

@@ -1,19 +1,29 @@
 package com.rbac.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by hahah on 2017/5/5.
  */
 @Entity
-@Table(name = "usergroup", schema = "rbac", catalog = "")
+@Table(name = "usergroup", schema = "rbac")
 public class UsergroupEntity {
-    private int usergroupid;
-    private String usergroupname;
-    private int parentusergroupid;
-
     @Id
     @Column(name = "usergroupid")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int usergroupid;
+
+    @Basic
+    @Column(name = "usergroupname")
+    private String usergroupname;
+
+    @OneToMany(mappedBy = "ugusergroupEntity",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    private Set<User2GroupEntity> user2GroupEntitySet;
+
+    @OneToMany(mappedBy = "grusergroupEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Usergroup2RoleEntity> usergroup2RoleEntitySet;
+
     public int getUsergroupid() {
         return usergroupid;
     }
@@ -22,24 +32,12 @@ public class UsergroupEntity {
         this.usergroupid = usergroupid;
     }
 
-    @Basic
-    @Column(name = "usergroupname")
     public String getUsergroupname() {
         return usergroupname;
     }
 
     public void setUsergroupname(String usergroupname) {
         this.usergroupname = usergroupname;
-    }
-
-    @Basic
-    @Column(name = "parentusergroupid")
-    public int getParentusergroupid() {
-        return parentusergroupid;
-    }
-
-    public void setParentusergroupid(int parentusergroupid) {
-        this.parentusergroupid = parentusergroupid;
     }
 
     @Override
@@ -50,7 +48,6 @@ public class UsergroupEntity {
         UsergroupEntity that = (UsergroupEntity) o;
 
         if (usergroupid != that.usergroupid) return false;
-        if (parentusergroupid != that.parentusergroupid) return false;
         if (usergroupname != null ? !usergroupname.equals(that.usergroupname) : that.usergroupname != null)
             return false;
 
@@ -61,7 +58,6 @@ public class UsergroupEntity {
     public int hashCode() {
         int result = usergroupid;
         result = 31 * result + (usergroupname != null ? usergroupname.hashCode() : 0);
-        result = 31 * result + parentusergroupid;
         return result;
     }
 }

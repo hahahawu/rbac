@@ -1,20 +1,26 @@
 package com.rbac.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by hahah on 2017/5/5.
  */
 @Entity
-@Table(name = "user2group", schema = "rbac", catalog = "")
+@Table(name = "user2group", schema = "rbac")
 public class User2GroupEntity {
-    private int u2Gid;
-
     @Id
     @Column(name = "u2gid")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int u2Gid;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "uid",referencedColumnName = "userid")
+    private UserEntity uguserEntity;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "gid",referencedColumnName = "usergroupid")
+    private UsergroupEntity ugusergroupEntity;
+
     public int getU2Gid() {
         return u2Gid;
     }

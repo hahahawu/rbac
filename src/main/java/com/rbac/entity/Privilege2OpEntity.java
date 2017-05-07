@@ -1,20 +1,25 @@
 package com.rbac.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by hahah on 2017/5/5.
  */
 @Entity
-@Table(name = "privilege2op", schema = "rbac", catalog = "")
+@Table(name = "privilege2op", schema = "rbac")
 public class Privilege2OpEntity {
-    private int p2Opid;
-
     @Id
     @Column(name = "p2opid")
+    private int p2Opid;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "pid",referencedColumnName = "privilegeid")
+    private PrivilegeEntity poprivilegeEntity;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "oid",referencedColumnName = "operationid")
+    private OperationEntity pooperationEntity;
+
     public int getP2Opid() {
         return p2Opid;
     }

@@ -29,7 +29,6 @@ public class TestApplication {
         for (UserEntity userEntity : userEntities){
             System.out.println(userEntity.getUsername());
         }
-//        System.out.println(userRepository.findUserEntityByUserid(1).getUsername());
         UserEntity userEntity = userRepository.findUserEntityByUserid(1,"admin");
         System.out.println(userEntity.getUsername());
         System.out.println("size:"+userEntity.getUser2RoleEntitySet().size());

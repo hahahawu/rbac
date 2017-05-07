@@ -13,34 +13,28 @@ public class User2RoleEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int u2Rid;
 
-//    @Column(name = "uid",nullable = false)
-//    private int uid;
-//
-//    @Column(name = "rid",nullable = false)
-//    private int rid;
-
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "uid", referencedColumnName = "userid")
-    private UserEntity userEntity;
+    private UserEntity uruserEntity;
 
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "rid", referencedColumnName = "roleid")
-    private RoleEntity roleEntity;
+    private RoleEntity urroleEntity;
 
     public UserEntity getUserEntity() {
-        return userEntity;
+        return uruserEntity;
     }
 
     public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+        this.uruserEntity = userEntity;
     }
 
     public RoleEntity getRoleEntity() {
-        return roleEntity;
+        return urroleEntity;
     }
 
     public void setRoleEntity(RoleEntity roleEntity) {
-        this.roleEntity = roleEntity;
+        this.urroleEntity = roleEntity;
     }
 
 

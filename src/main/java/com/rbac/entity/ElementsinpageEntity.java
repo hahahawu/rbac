@@ -1,28 +1,33 @@
 package com.rbac.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by hahah on 2017/5/5.
  */
 @Entity
-@Table(name = "elementsinpage", schema = "rbac", catalog = "")
+@Table(name = "elementsinpage", schema = "rbac")
 public class ElementsinpageEntity {
-    private int elementid;
-    private String elementname;
-
     @Id
     @Column(name = "elementid")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int elementid;
+
+    @Basic
+    @Column(name = "elementname",nullable = false)
+    private String elementname;
+
+    @OneToMany(mappedBy = "peelementsinpageEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Privilege2ElementEntity> privilege2ElementEntities;
+
     public int getElementid() {
         return elementid;
     }
-
     public void setElementid(int elementid) {
         this.elementid = elementid;
     }
 
-    @Basic
-    @Column(name = "elementname")
     public String getElementname() {
         return elementname;
     }

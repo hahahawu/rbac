@@ -14,11 +14,17 @@ public class RoleEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int roleid;
     @Basic
-    @Column(name = "rolename")
+    @Column(name = "rolename",nullable = false)
     private String rolename;
 
-    @OneToMany(mappedBy = "roleEntity",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "urroleEntity",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     private Set<User2RoleEntity> user2RoleEntitySet;
+
+    @OneToMany(mappedBy = "grroleEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Usergroup2RoleEntity> usergroup2RoleEntitySet;
+
+    @OneToMany(mappedBy = "rproleEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Role2PrivilegeEntity> role2PrivilegeEntitySet;
 
     public int getRoleid() {
         return roleid;

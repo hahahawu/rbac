@@ -13,14 +13,20 @@ public class UserEntity {
     @Column(name = "userid")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userid;
+
     @Basic
     @Column(name = "username")
     private String username;
+
     @Basic
     @Column(name = "password")
     private String password;
-    @OneToMany(mappedBy = "userEntity",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "uruserEntity",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     private Set<User2RoleEntity> user2RoleEntitySet;
+
+    @OneToMany(mappedBy = "uguserEntity",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    private Set<User2GroupEntity> user2GroupEntitySet;
 
     public int getUserid() {
         return userid;
