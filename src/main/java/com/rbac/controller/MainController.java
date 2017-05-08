@@ -1,9 +1,9 @@
 package com.rbac.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by hahah on 2017/5/4.
@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MainController {
 
     @RequestMapping("/hello")
-    public @ResponseBody
-    String hello(Model model){
+    public ModelAndView hello(ModelMap model){
         String hello = "Hello RBAC!";
-        System.out.println(hello);
         model.addAttribute("hello",hello);
-        return "hello";
+        return new ModelAndView("hello", model);
     }
+
+    @RequestMapping("/login")
+    public ModelAndView login(ModelMap modelMap){
+        return new ModelAndView("login",modelMap);
+    }
+
 }
