@@ -1,3 +1,29 @@
-.hello{
-    color: red;
+body{
+    font-family: "Calisto MT";
+    background-color: rgba(186, 186, 186, 0.3);
+}
+
+.login-panel{
+    width: 100%;
+    height: 120%;
+    max-height: 500px;
+    margin-top: 15%;
+    background: rgba(256, 256, 256, 0.73);
+    box-shadow: -7px 8px 5px #888888;
+    padding: 10px;
+}
+
+.form-group .is-focused {
+    outline: none;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#009688), to(#009688)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+    background-image: -webkit-linear-gradient(#009688, #009688), -webkit-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: -o-linear-gradient(#009688, #009688), -o-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#009688, #009688), linear-gradient(#D2D2D2, #D2D2D2);
+    -webkit-background-size: 100% 2px, 100% 1px;
+    background-size: 100% 2px, 100% 1px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
 }
