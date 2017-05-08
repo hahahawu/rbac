@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:tx="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container-fluid" style="padding: 20px">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-1">
+            <h1>RBAC</h1>
+            <p class="lead">将全国人民通过不同身份进行角色划分，分配不同权限，在页面展示不同元素</p>
+        </div>
+        <div class="col-lg-offset-1 col-lg-5">
+            <div class="well well-lg well-block">
+                <h2><i th:text="${user.getUsername()}"></i></h2>
+                <div class="role-group-well">
+                    <div class="role-block">
+                        <p class="role-header">你的角色 :</p>
+                        <div th:each="rolename : ${rolelist}">
+                            <li class="role-item" th:text="${rolename}"></li>
+                        </div>
+                    </div>
+                    <div class="role-block">
+                        <p class="role-header">你所属的群体 :</p>
+                        <div th:each="groupname : ${grouplist}">
+                            <li class="role-item" th:text="${groupname}"></li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-10 well well-lg">
+            <h3>
+                <em>模块：</em>
+            </h3>
+
+            <div class="row">
+                <div class="col-lg-4" th:each="element : ${elements}">
+                    <div class="panel panel-primary info-panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" th:text="${element}"></h3>
+                        </div>
+                        <div class="panel-body">
+                            detail information...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px">
+        <div class="col-lg-offset-1 col-lg-10 well well-lg">
+            <h3>
+                <em>操作：</em>
+            </h3>
+            <div class="row">
+                <div class="col-lg-4" th:each="operation : ${operations}">
+                    <a href="javascript:void(0)"
+                       style="width: 90%"
+                       class="btn btn-raised btn-primary"
+                        th:text="${operation}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

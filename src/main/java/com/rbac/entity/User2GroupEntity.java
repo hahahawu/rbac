@@ -13,6 +13,22 @@ public class User2GroupEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int u2Gid;
 
+    public UserEntity getUguserEntity() {
+        return uguserEntity;
+    }
+
+    public void setUguserEntity(UserEntity uguserEntity) {
+        this.uguserEntity = uguserEntity;
+    }
+
+    public UsergroupEntity getUgusergroupEntity() {
+        return ugusergroupEntity;
+    }
+
+    public void setUgusergroupEntity(UsergroupEntity ugusergroupEntity) {
+        this.ugusergroupEntity = ugusergroupEntity;
+    }
+
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "uid",referencedColumnName = "userid")
     private UserEntity uguserEntity;

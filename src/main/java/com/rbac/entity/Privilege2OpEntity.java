@@ -16,6 +16,22 @@ public class Privilege2OpEntity {
     @JoinColumn(name = "pid",referencedColumnName = "privilegeid")
     private PrivilegeEntity poprivilegeEntity;
 
+    public PrivilegeEntity getPoprivilegeEntity() {
+        return poprivilegeEntity;
+    }
+
+    public void setPoprivilegeEntity(PrivilegeEntity poprivilegeEntity) {
+        this.poprivilegeEntity = poprivilegeEntity;
+    }
+
+    public OperationEntity getPooperationEntity() {
+        return pooperationEntity;
+    }
+
+    public void setPooperationEntity(OperationEntity pooperationEntity) {
+        this.pooperationEntity = pooperationEntity;
+    }
+
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "oid",referencedColumnName = "operationid")
     private OperationEntity pooperationEntity;

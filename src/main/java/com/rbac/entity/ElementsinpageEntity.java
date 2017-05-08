@@ -14,6 +14,14 @@ public class ElementsinpageEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int elementid;
 
+    public Set<Privilege2ElementEntity> getPrivilege2ElementEntities() {
+        return privilege2ElementEntities;
+    }
+
+    public void setPrivilege2ElementEntities(Set<Privilege2ElementEntity> privilege2ElementEntities) {
+        this.privilege2ElementEntities = privilege2ElementEntities;
+    }
+
     @Basic
     @Column(name = "elementname",nullable = false)
     private String elementname;

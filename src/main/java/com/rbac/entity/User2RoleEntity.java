@@ -17,8 +17,25 @@ public class User2RoleEntity {
     @JoinColumn(name = "uid", referencedColumnName = "userid")
     private UserEntity uruserEntity;
 
+    public UserEntity getUruserEntity() {
+        return uruserEntity;
+    }
+
+    public void setUruserEntity(UserEntity uruserEntity) {
+        this.uruserEntity = uruserEntity;
+    }
+
+    public RoleEntity getUrroleEntity() {
+        return urroleEntity;
+    }
+
+    public void setUrroleEntity(RoleEntity urroleEntity) {
+        this.urroleEntity = urroleEntity;
+    }
+
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "rid", referencedColumnName = "roleid")
+
     private RoleEntity urroleEntity;
 
     public UserEntity getUserEntity() {

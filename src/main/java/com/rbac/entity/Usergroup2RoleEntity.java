@@ -45,4 +45,20 @@ public class Usergroup2RoleEntity {
     public int hashCode() {
         return u2Rid;
     }
+
+    public UsergroupEntity getGrusergroupEntity() {
+        return grusergroupEntity;
+    }
+
+    public void setGrusergroupEntity(UsergroupEntity grusergroupEntity) {
+        this.grusergroupEntity = grusergroupEntity;
+    }
+
+    public RoleEntity getGrroleEntity() {
+        return grroleEntity;
+    }
+
+    public void setGrroleEntity(RoleEntity grroleEntity) {
+        this.grroleEntity = grroleEntity;
+    }
 }

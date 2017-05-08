@@ -17,6 +17,14 @@ public class OperationEntity {
     @Column(name = "operationname",nullable = false)
     private String operationname;
 
+    public Set<Privilege2OpEntity> getPrivilege2OpEntitySet() {
+        return privilege2OpEntitySet;
+    }
+
+    public void setPrivilege2OpEntitySet(Set<Privilege2OpEntity> privilege2OpEntitySet) {
+        this.privilege2OpEntitySet = privilege2OpEntitySet;
+    }
+
     @OneToMany(mappedBy = "pooperationEntity",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Privilege2OpEntity> privilege2OpEntitySet;
 

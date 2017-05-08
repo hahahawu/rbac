@@ -17,6 +17,22 @@ public class Role2PrivilegeEntity {
     @JoinColumn(name = "rid",referencedColumnName = "roleid")
     private RoleEntity rproleEntity;
 
+    public RoleEntity getRproleEntity() {
+        return rproleEntity;
+    }
+
+    public void setRproleEntity(RoleEntity rproleEntity) {
+        this.rproleEntity = rproleEntity;
+    }
+
+    public PrivilegeEntity getRpprivilegeEntity() {
+        return rpprivilegeEntity;
+    }
+
+    public void setRpprivilegeEntity(PrivilegeEntity rpprivilegeEntity) {
+        this.rpprivilegeEntity = rpprivilegeEntity;
+    }
+
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "pid",referencedColumnName = "privilegeid")
     private PrivilegeEntity rpprivilegeEntity;

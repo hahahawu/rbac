@@ -18,6 +18,22 @@ public class UsergroupEntity {
     @Column(name = "usergroupname")
     private String usergroupname;
 
+    public Set<User2GroupEntity> getUser2GroupEntitySet() {
+        return user2GroupEntitySet;
+    }
+
+    public void setUser2GroupEntitySet(Set<User2GroupEntity> user2GroupEntitySet) {
+        this.user2GroupEntitySet = user2GroupEntitySet;
+    }
+
+    public Set<Usergroup2RoleEntity> getUsergroup2RoleEntitySet() {
+        return usergroup2RoleEntitySet;
+    }
+
+    public void setUsergroup2RoleEntitySet(Set<Usergroup2RoleEntity> usergroup2RoleEntitySet) {
+        this.usergroup2RoleEntitySet = usergroup2RoleEntitySet;
+    }
+
     @OneToMany(mappedBy = "ugusergroupEntity",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     private Set<User2GroupEntity> user2GroupEntitySet;
 

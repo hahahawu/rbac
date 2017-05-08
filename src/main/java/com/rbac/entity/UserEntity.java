@@ -44,6 +44,13 @@ public class UserEntity {
         this.username = username;
     }
 
+    public Set<User2GroupEntity> getUser2GroupEntitySet() {
+        return user2GroupEntitySet;
+    }
+
+    public void setUser2GroupEntitySet(Set<User2GroupEntity> user2GroupEntitySet) {
+        this.user2GroupEntitySet = user2GroupEntitySet;
+    }
 
     public String getPassword() {
         return password;

@@ -16,8 +16,25 @@ public class Privilege2ElementEntity {
     @JoinColumn(name = "pid",referencedColumnName = "privilegeid")
     private PrivilegeEntity peprivilegeEntity;
 
+    public PrivilegeEntity getPeprivilegeEntity() {
+        return peprivilegeEntity;
+    }
+
+    public void setPeprivilegeEntity(PrivilegeEntity peprivilegeEntity) {
+        this.peprivilegeEntity = peprivilegeEntity;
+    }
+
+    public ElementsinpageEntity getPeelementsinpageEntity() {
+        return peelementsinpageEntity;
+    }
+
+    public void setPeelementsinpageEntity(ElementsinpageEntity peelementsinpageEntity) {
+        this.peelementsinpageEntity = peelementsinpageEntity;
+    }
+
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "eid",referencedColumnName = "elementid")
+
     private ElementsinpageEntity peelementsinpageEntity;
 
     public int getP2Eid() {

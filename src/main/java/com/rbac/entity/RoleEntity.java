@@ -9,9 +9,34 @@ import java.util.Set;
 @Entity
 @Table(name = "role", schema = "rbac")
 public class RoleEntity {
+    public Set<User2RoleEntity> getUser2RoleEntitySet() {
+        return user2RoleEntitySet;
+    }
+
+    public void setUser2RoleEntitySet(Set<User2RoleEntity> user2RoleEntitySet) {
+        this.user2RoleEntitySet = user2RoleEntitySet;
+    }
+
+    public Set<Usergroup2RoleEntity> getUsergroup2RoleEntitySet() {
+        return usergroup2RoleEntitySet;
+    }
+
+    public void setUsergroup2RoleEntitySet(Set<Usergroup2RoleEntity> usergroup2RoleEntitySet) {
+        this.usergroup2RoleEntitySet = usergroup2RoleEntitySet;
+    }
+
+    public Set<Role2PrivilegeEntity> getRole2PrivilegeEntitySet() {
+        return role2PrivilegeEntitySet;
+    }
+
+    public void setRole2PrivilegeEntitySet(Set<Role2PrivilegeEntity> role2PrivilegeEntitySet) {
+        this.role2PrivilegeEntitySet = role2PrivilegeEntitySet;
+    }
+
     @Id
     @Column(name = "roleid")
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private int roleid;
     @Basic
     @Column(name = "rolename",nullable = false)

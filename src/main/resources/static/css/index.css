@@ -27,3 +27,30 @@ body{
     -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
+
+.well-block{
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.role-group-well{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.role-header{
+    font-size: large;
+    font-weight: bold;
+}
+
+.role-item{
+    padding-left: 50px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.info-panel{
+    width: 100%;
+    margin-right: 10%;
+}

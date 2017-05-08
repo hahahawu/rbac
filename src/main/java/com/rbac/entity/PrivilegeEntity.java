@@ -12,6 +12,31 @@ public class PrivilegeEntity {
     @Id
     @Column(name = "privilegeid")
     private int privilegeid;
+
+    public Set<Role2PrivilegeEntity> getRole2PrivilegeEntitySet() {
+        return role2PrivilegeEntitySet;
+    }
+
+    public void setRole2PrivilegeEntitySet(Set<Role2PrivilegeEntity> role2PrivilegeEntitySet) {
+        this.role2PrivilegeEntitySet = role2PrivilegeEntitySet;
+    }
+
+    public Set<Privilege2OpEntity> getPrivilege2OpEntitySet() {
+        return privilege2OpEntitySet;
+    }
+
+    public void setPrivilege2OpEntitySet(Set<Privilege2OpEntity> privilege2OpEntitySet) {
+        this.privilege2OpEntitySet = privilege2OpEntitySet;
+    }
+
+    public Set<Privilege2ElementEntity> getPrivilege2ElementEntitySet() {
+        return privilege2ElementEntitySet;
+    }
+
+    public void setPrivilege2ElementEntitySet(Set<Privilege2ElementEntity> privilege2ElementEntitySet) {
+        this.privilege2ElementEntitySet = privilege2ElementEntitySet;
+    }
+
     @Basic
     @Column(name = "privilegename",nullable = false)
     private String privilegename;
