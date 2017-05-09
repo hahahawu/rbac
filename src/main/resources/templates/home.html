@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:tx="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>home</title>
@@ -12,11 +11,27 @@
 </head>
 <body>
 <div class="container-fluid" style="padding: 20px">
+
+    <div class="row" th:switch="${privilege}">
+        <div class="alert alert-dismissible alert-warning col-lg-offset-3 col-lg-6" th:case="reject">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4>Warning!</h4>
+            <p>对不起，您的权限不足以执行该操作。</p>
+        </div>
+        <div class="alert alert-dismissible alert-success col-lg-offset-3 col-lg-6" th:case="accept">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4>Success!</h4>
+            <p>恭喜，您有权限执行该操作。</p>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-4 col-lg-offset-1">
             <h1>RBAC</h1>
             <p class="lead">将全国人民通过不同身份进行角色划分，分配不同权限，在页面展示不同元素</p>
+            <a href="/test" class="btn btn-default btn-lg btn-block btn-raised">权限测试按钮</a>
         </div>
+
         <div class="col-lg-offset-1 col-lg-5">
             <div class="well well-lg well-block">
                 <h2><i th:text="${user.getUsername()}"></i></h2>
@@ -37,10 +52,11 @@
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-lg-offset-1 col-lg-10 well well-lg">
             <h3>
-                <em>模块：</em>
+                <em>办公模块：</em>
             </h3>
 
             <div class="row">
@@ -68,7 +84,22 @@
                     <a href="javascript:void(0)"
                        style="width: 90%"
                        class="btn btn-raised btn-primary"
+                       onclick=f(this)
                         th:text="${operation}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="op-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>information</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick=disf()>Close</button>
                 </div>
             </div>
         </div>
@@ -76,4 +107,14 @@
 
 </div>
 </body>
+<script type="application/javascript">
+    function f(obj) {
+        var t = document.getElementById("op-modal");
+        t.firstElementChild.firstElementChild.firstElementChild.firstElementChild.textContent = obj.textContent;
+        t.style.display = "block";
+    }
+    function disf() {
+        document.getElementById("op-modal").style.display = "none";
+    }
+</script>
 </html>

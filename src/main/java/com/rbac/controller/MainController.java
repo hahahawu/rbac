@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -37,10 +38,21 @@ public class MainController {
         return new ModelAndView("login",modelMap);
     }
 
+    @RequestMapping("/test")
+    public ModelAndView testPrivilege(HttpSession session){
+        ModelMap modelMap = (ModelMap)session.getAttribute("modelMap");
+        ArrayList rolelist = (ArrayList) (modelMap).get("rolelist");
+        if (rolelist.contains("政府工作人员")){
+            modelMap.addAttribute("privilege","accept");
+        }
+        else modelMap.addAttribute("privilege","reject");
+        return new ModelAndView("home",modelMap);
+    }
+
     @RequestMapping(value = "/home",method = RequestMethod.POST)
     public ModelAndView home(@RequestParam("username") String username,
                              @RequestParam("userpassword") String userpassword ,
-                             ModelMap modelMap){
+                             ModelMap modelMap,HttpSession session){
         UserEntity user = userRepository.findUserEntityByUsername(username);
         if(user!=null&&user.getPassword().equals(userpassword)){
             Set<User2RoleEntity> userRoleSet = user.getUser2RoleEntitySet();
@@ -50,11 +62,13 @@ public class MainController {
             ArrayList privileges = getPrivileges(rolelist);
             ArrayList elements = getElements(privileges);
             ArrayList operations = getOperations(privileges);
+            modelMap.addAttribute("privilege","normal");
             modelMap.addAttribute("rolelist",rolelist);
             modelMap.addAttribute("grouplist",grouplist);
             modelMap.addAttribute("elements",elements);
             modelMap.addAttribute("operations",operations);
             modelMap.addAttribute("user",user);
+            session.setAttribute("modelMap",modelMap);
             return new ModelAndView("home",modelMap);
         }
         else{
