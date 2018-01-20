@@ -21,10 +21,15 @@ The project use spring-boot, spring-framework, spring-data-jpa, thymeleaf, boots
 ***
 
 1.import the project into your IDE(I used idea.)
+
 2.install gradle
+
 3.build gradle
+
 4.update databases connection configuration
+
 5.compile java code
+
 6.package and deploy
 
 # Prerequisite
